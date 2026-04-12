@@ -12,6 +12,7 @@ macOS personal bootstrap for Egor Zekov. Stack: Node.js · Rust · AWS.
 | `aliases.sh` | Shell aliases — source into `~/.zshrc` |
 | `ssh.sh` | Interactive GitHub SSH key setup — run standalone (run **before** `bootstrap.sh`) |
 | `templates/.gitconfig.template` | Git config template with `{{NAME}}`/`{{EMAIL}}` placeholders |
+| `templates/.ghostty.template` | Ghostty terminal config template |
 
 `bootstrap.sh` must be executed from the repo root (`bash bootstrap.sh`) because it sources `utils.sh` via `source ./utils.sh`. `ssh.sh` uses `$(dirname "$0")/utils.sh` so it works from any directory.
 

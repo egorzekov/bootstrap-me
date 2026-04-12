@@ -153,9 +153,25 @@ if [[ -f "$PROFILE" ]]; then
 fi
 
 # =============================================================================
-# 7. MANUAL INSTALLS
+# 7. GHOSTTY CONFIG
 # =============================================================================
-print_box "[7] MANUAL INSTALLS"
+print_box "[7] GHOSTTY CONFIG"
+
+GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
+GHOSTTY_TEMPLATE="$(dirname "$0")/templates/.ghostty.template"
+
+if [[ -f "$GHOSTTY_CONFIG" ]]; then
+  ok "~/.config/ghostty/config already exists — skipping"
+else
+  mkdir -p "$HOME/.config/ghostty"
+  cp "$GHOSTTY_TEMPLATE" "$GHOSTTY_CONFIG"
+  ok "~/.config/ghostty/config written"
+fi
+
+# =============================================================================
+# 8. MANUAL INSTALLS
+# =============================================================================
+print_box "[8] MANUAL INSTALLS"
 
 log "Open the following links in your browser and install manually:"
 echo ""

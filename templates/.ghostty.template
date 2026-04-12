@@ -1,0 +1,25 @@
+# =============================================================================
+# Ghostty Configuration
+# =============================================================================
+
+# Theme
+theme = Doom Peacock
+
+# Font — requires a Nerd Font for eza icons
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+
+# Window
+window-padding-x = 8
+window-padding-y = 8
+window-decoration = true
+
+# Shell
+shell-integration = zsh
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Misc
+confirm-close-surface = false
