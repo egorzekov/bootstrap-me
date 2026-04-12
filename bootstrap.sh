@@ -84,6 +84,7 @@ BREWS=(
   docker
   nvm
   rustup
+  git-delta
 )
  
 for pkg in "${BREWS[@]}"; do
@@ -117,9 +118,36 @@ for cask in "${CASKS[@]}"; do
 done
 
 # =============================================================================
-# 6. MANUAL INSTALLS 
+# 6. GIT CONFIG
 # =============================================================================
-print_box "[6] MANUAL INSTALLS"
+print_box "[6] GIT CONFIG"
+
+GITCONFIG="$HOME/.gitconfig"
+PROFILE="$HOME/.bootstrap_profile"
+TEMPLATE="$(dirname "$0")/templates/.gitconfig.template"
+
+if [[ -f "$GITCONFIG" ]]; then
+  ok "~/.gitconfig already exists — skipping"
+else
+  if [[ ! -f "$PROFILE" ]]; then
+    warn "~/.bootstrap_profile not found — run ssh.sh first, then re-run bootstrap"
+  else
+    source "$PROFILE"
+    sed -e "s/{{NAME}}/$GIT_NAME/" -e "s/{{EMAIL}}/$GIT_EMAIL/" "$TEMPLATE" > "$GITCONFIG"
+    ok "~/.gitconfig written"
+  fi
+fi
+
+# Clean up shared profile — no longer needed after this point
+if [[ -f "$PROFILE" ]]; then
+  rm -f "$PROFILE"
+  ok "~/.bootstrap_profile cleaned up"
+fi
+
+# =============================================================================
+# 7. MANUAL INSTALLS
+# =============================================================================
+print_box "[7] MANUAL INSTALLS"
 
 log "Open the following links in your browser and install manually:"
 echo ""

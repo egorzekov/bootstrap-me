@@ -10,9 +10,12 @@ macOS personal bootstrap for Egor Zekov. Stack: Node.js · Rust · AWS.
 | `utils.sh` | Shared logging/UI helpers — sourced by all scripts |
 | `config.sh` | Shell env config (nvm, zoxide) — source into `~/.zshrc` |
 | `aliases.sh` | Shell aliases — source into `~/.zshrc` |
-| `ssh.sh` | Interactive GitHub SSH key setup — run standalone |
+| `ssh.sh` | Interactive GitHub SSH key setup — run standalone (run **before** `bootstrap.sh`) |
+| `templates/.gitconfig.template` | Git config template with `{{NAME}}`/`{{EMAIL}}` placeholders |
 
 `bootstrap.sh` must be executed from the repo root (`bash bootstrap.sh`) because it sources `utils.sh` via `source ./utils.sh`. `ssh.sh` uses `$(dirname "$0")/utils.sh` so it works from any directory.
+
+**Run order:** `ssh.sh` → `bootstrap.sh`. `ssh.sh` writes `~/.bootstrap_profile` (GIT_NAME + GIT_EMAIL) which step 7 of `bootstrap.sh` consumes to render `templates/.gitconfig.template` into `~/.gitconfig`, then deletes the profile file.
 
 ## Conventions
 
@@ -36,3 +39,5 @@ fi
 **Apple Silicon awareness** — check `uname -m == "arm64"` when paths differ between Intel and M-series Macs (e.g., Homebrew prefix `/opt/homebrew` vs `/usr/local`).
 
 **Fail-fast** — `bootstrap.sh` and `ssh.sh` both use `set -e`.
+
+**Section ordering** — MANUAL INSTALLS must always be the last step in `bootstrap.sh`. All automated steps go before it.

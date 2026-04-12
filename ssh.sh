@@ -12,13 +12,26 @@ source "$(dirname "$0")/utils.sh"
 print_box "[SSH] GITHUB SSH KEY SETUP"
 
 # =============================================================================
-# 1. PROMPT FOR EMAIL
+# 1. PROMPT FOR NAME & EMAIL
 # =============================================================================
+read -rp "  Enter your full name (for git): " GIT_NAME
+if [[ -z "$GIT_NAME" ]]; then
+  warn "No name provided. Aborting."
+  exit 1
+fi
+
 read -rp "  Enter your GitHub email: " EMAIL
 if [[ -z "$EMAIL" ]]; then
   warn "No email provided. Aborting."
   exit 1
 fi
+
+PROFILE="$HOME/.bootstrap_profile"
+cat > "$PROFILE" <<EOF
+GIT_NAME="$GIT_NAME"
+GIT_EMAIL="$EMAIL"
+EOF
+ok "Saved profile to $PROFILE"
 
 # =============================================================================
 # 2. GENERATE SSH KEY
