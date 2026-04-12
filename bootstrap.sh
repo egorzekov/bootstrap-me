@@ -71,20 +71,28 @@ fi
 print_box "[4] BREW CLI TOOLS"
  
 BREWS=(
-  jq
+  # git
+  gh
+  git-delta
+  lazygit
+
+  # terminal
   fzf
+  zoxide
+  tmux
+
+  # file & search
   bat
   eza
   ripgrep
   fd
-  tmux
-  zoxide
+
+  # dev
+  jq
   nvim
-  gh
-  docker
   nvm
   rustup
-  git-delta
+  docker
 )
  
 for pkg in "${BREWS[@]}"; do

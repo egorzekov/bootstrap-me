@@ -10,8 +10,9 @@
 	diffFilter = delta --color-only
 
 [delta]
-	navigate = true
-	dark     = true
+	navigate    = true
+	dark        = true
+	side-by-side = true
 
 [diff]
 	colorMoved = default
@@ -27,9 +28,3 @@
 
 [pull]
 	rebase = false
-
-[alias]
-	st  = status -sb
-	co  = checkout
-	br  = branch
-	lg  = log --oneline --graph --decorate --all
