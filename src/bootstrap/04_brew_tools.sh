@@ -20,12 +20,11 @@ BREWS=(
   fzf
   zoxide
   tmux
-
-  # file & search
   bat
   eza
   ripgrep
   fd
+  tlrc
 
   # dev
   jq
