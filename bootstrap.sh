@@ -157,15 +157,15 @@ fi
 # =============================================================================
 print_box "[7] GHOSTTY CONFIG"
 
-GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
+GHOSTTY_CONFIG="$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
 GHOSTTY_TEMPLATE="$(dirname "$0")/templates/.ghostty.template"
 
 if [[ -f "$GHOSTTY_CONFIG" ]]; then
-  ok "~/.config/ghostty/config already exists — skipping"
+  ok "Ghostty config already exists — skipping"
 else
-  mkdir -p "$HOME/.config/ghostty"
+  mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
   cp "$GHOSTTY_TEMPLATE" "$GHOSTTY_CONFIG"
-  ok "~/.config/ghostty/config written"
+  ok "Ghostty config written"
 fi
 
 # =============================================================================
