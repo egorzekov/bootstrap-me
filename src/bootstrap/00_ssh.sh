@@ -2,14 +2,13 @@
 
 # =============================================================================
 # SSH — Generate and register an SSH key for GitHub
-# Usage: bash ./ssh.sh
 # =============================================================================
 
 set -e
 
-source "$(dirname "$0")/utils.sh"
+source "$(dirname "$0")/../utils.sh"
 
-print_box "[SSH] GITHUB SSH KEY SETUP"
+print_box "[00] GITHUB SSH KEY SETUP"
 
 # =============================================================================
 # 1. PROMPT FOR NAME & EMAIL
