@@ -17,14 +17,15 @@ BREWS=(
   lazygit
 
   # terminal
+  zellij
   fzf
   zoxide
-  tmux
   bat
   eza
   ripgrep
   fd
   tlrc
+  htop
 
   # dev
   jq
