@@ -62,7 +62,7 @@ fi
 
 **Section ordering** — `07_manual_installs.sh` must always be the last script. All automated steps go before it. New scripts must be assigned a number before `07`.
 
-**Stow-managed dotfiles** — configs in `dotfiles/<pkg>/` are symlinked into `$HOME` using GNU stow. Bootstrap scripts use `-R` (restow) for idempotent linking. To remove all links, run `bash scripts/stow_unlink.sh`.
+**Stow-managed dotfiles** — configs in `dotfiles/<pkg>/` are symlinked into `$HOME` using GNU stow with `--no-folding`: stow creates real directories and only symlinks the actual config files (prevents directory symlinks that would pollute the repo with app-written runtime files). Bootstrap scripts use `-R` (restow) for idempotent linking. To remove all links, run `bash scripts/stow_unlink.sh`.
 
 **gitconfig.local** — `dotfiles/git/.gitconfig` is a static committed file. It uses `[include] path = ~/.gitconfig.local` to pull in user-specific settings (name, email). `~/.gitconfig.local` is written by `06_dotfiles.sh` at bootstrap time from `~/.bootstrap_profile` and is never committed.
 

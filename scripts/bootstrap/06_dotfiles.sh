@@ -43,7 +43,7 @@ stow_package() {
   if [[ -f "$check_path" && ! -L "$check_path" ]]; then
     warn "$pkg: $check_path is a plain file (not stow-managed) — skipping"
   else
-    stow --dir="$DOTFILES_DIR" --target="$HOME" -R "$pkg"
+    stow --no-folding --dir="$DOTFILES_DIR" --target="$HOME" -R "$pkg"
     ok "$pkg linked via stow"
   fi
 }
