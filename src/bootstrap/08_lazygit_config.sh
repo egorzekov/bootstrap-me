@@ -11,12 +11,11 @@ source "$(dirname "$0")/../utils.sh"
 print_box "[08] LAZYGIT CONFIG"
 
 LAZYGIT_CONFIG="$HOME/Library/Application Support/lazygit/config.yml"
-LAZYGIT_TEMPLATE="$(dirname "$0")/../../templates/lazygit.config.yml.template"
+STOW_DIR="$(cd "$(dirname "$0")/../.." && pwd)/stow"
 
-if [[ -f "$LAZYGIT_CONFIG" ]]; then
-  ok "Lazygit config already exists — skipping"
+if [[ -f "$LAZYGIT_CONFIG" && ! -L "$LAZYGIT_CONFIG" ]]; then
+  warn "Lazygit config is a plain file (not managed by stow) — skipping"
 else
-  mkdir -p "$HOME/Library/Application Support/lazygit"
-  cp "$LAZYGIT_TEMPLATE" "$LAZYGIT_CONFIG"
-  ok "Lazygit config written"
+  stow --dir="$STOW_DIR" --target="$HOME" -R lazygit
+  ok "Lazygit config linked via stow"
 fi

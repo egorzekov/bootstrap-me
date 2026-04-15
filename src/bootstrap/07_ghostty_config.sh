@@ -11,12 +11,11 @@ source "$(dirname "$0")/../utils.sh"
 print_box "[07] GHOSTTY CONFIG"
 
 GHOSTTY_CONFIG="$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
-GHOSTTY_TEMPLATE="$(dirname "$0")/../../templates/.ghostty.template"
+STOW_DIR="$(cd "$(dirname "$0")/../.." && pwd)/stow"
 
-if [[ -f "$GHOSTTY_CONFIG" ]]; then
-  ok "Ghostty config already exists — skipping"
+if [[ -f "$GHOSTTY_CONFIG" && ! -L "$GHOSTTY_CONFIG" ]]; then
+  warn "Ghostty config is a plain file (not managed by stow) — skipping"
 else
-  mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
-  cp "$GHOSTTY_TEMPLATE" "$GHOSTTY_CONFIG"
-  ok "Ghostty config written"
+  stow --dir="$STOW_DIR" --target="$HOME" -R ghostty
+  ok "Ghostty config linked via stow"
 fi

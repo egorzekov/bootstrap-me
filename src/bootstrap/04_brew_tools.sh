@@ -15,6 +15,7 @@ BREWS=(
   gh
   git-delta
   lazygit
+  stow
 
   # terminal
   zellij
