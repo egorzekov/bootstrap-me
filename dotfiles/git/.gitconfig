@@ -1,6 +1,5 @@
-[user]
-	name  = {{NAME}}
-	email = {{EMAIL}}
+[include]
+	path = ~/.gitconfig.local
 
 [core]
 	editor = nvim
