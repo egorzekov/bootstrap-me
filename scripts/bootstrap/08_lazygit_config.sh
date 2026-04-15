@@ -11,7 +11,7 @@ source "$(dirname "$0")/../utils.sh"
 print_box "[08] LAZYGIT CONFIG"
 
 LAZYGIT_CONFIG="$HOME/Library/Application Support/lazygit/config.yml"
-STOW_DIR="$(cd "$(dirname "$0")/../.." && pwd)/stow"
+STOW_DIR="$(cd "$(dirname "$0")/../.." && pwd)/dotfiles"
 
 if [[ -f "$LAZYGIT_CONFIG" && ! -L "$LAZYGIT_CONFIG" ]]; then
   warn "Lazygit config is a plain file (not managed by stow) — skipping"

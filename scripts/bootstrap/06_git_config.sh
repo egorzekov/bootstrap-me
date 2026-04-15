@@ -13,7 +13,7 @@ print_box "[06] GIT CONFIG"
 GITCONFIG="$HOME/.gitconfig"
 PROFILE="$HOME/.bootstrap_profile"
 TEMPLATE="$(dirname "$0")/../../templates/.gitconfig.template"
-STOW_DIR="$(cd "$(dirname "$0")/../.." && pwd)/stow"
+STOW_DIR="$(cd "$(dirname "$0")/../.." && pwd)/dotfiles"
 STOW_GITCONFIG="$STOW_DIR/git/.gitconfig"
 
 if [[ -f "$GITCONFIG" && ! -L "$GITCONFIG" ]]; then

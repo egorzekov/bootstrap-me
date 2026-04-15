@@ -11,7 +11,7 @@ source "$(dirname "$0")/../utils.sh"
 print_box "[07] GHOSTTY CONFIG"
 
 GHOSTTY_CONFIG="$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
-STOW_DIR="$(cd "$(dirname "$0")/../.." && pwd)/stow"
+STOW_DIR="$(cd "$(dirname "$0")/../.." && pwd)/dotfiles"
 
 if [[ -f "$GHOSTTY_CONFIG" && ! -L "$GHOSTTY_CONFIG" ]]; then
   warn "Ghostty config is a plain file (not managed by stow) — skipping"
