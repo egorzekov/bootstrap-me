@@ -91,7 +91,7 @@ _fzf_compgen_dir() {
 # ZOXIDE — smarter cd
 # =============================================================================
 
-eval "$(zoxide init zsh --no-cmd)"  # registers __zoxide_z; pair with an alias (e.g. alias z=__zoxide_z)
+eval "$(zoxide init zsh)"  # registers __zoxide_z; pair with an alias (e.g. alias z=__zoxide_z)
 
 # =============================================================================
 # ALIASES
@@ -113,7 +113,7 @@ alias g="git"      # git shorthand
 # alias m=""
 alias n="nvim"     # open Neovim
 # alias o=""
-alias p="pnpm"
+alias p="pnpm"     # pnpm package manager
 # alias q=""
 # alias r=""
 # alias s=""
