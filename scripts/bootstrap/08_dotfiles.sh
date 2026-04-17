@@ -20,6 +20,7 @@ GITCONFIG_LOCAL="$HOME/.gitconfig.local"
 
 if [[ ! -f "$PROFILE" ]]; then
   warn "~/.bootstrap_profile not found — run 00_ssh.sh first, then re-run"
+  exit 1
 else
   source "$PROFILE"
   cat > "$GITCONFIG_LOCAL" <<EOF
@@ -52,6 +53,12 @@ stow_package() {
 if [[ -f "$HOME/.zshrc" && ! -L "$HOME/.zshrc" ]]; then
   mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
   warn ".zshrc was a plain file — backed up to ~/.zshrc.bak"
+fi
+
+# ~/.gitconfig may be a plain file on a fresh Mac; back it up so stow can manage it
+if [[ -f "$HOME/.gitconfig" && ! -L "$HOME/.gitconfig" ]]; then
+  mv "$HOME/.gitconfig" "$HOME/.gitconfig.bak"
+  warn ".gitconfig was a plain file — backed up to ~/.gitconfig.bak"
 fi
 
 stow_package git      "$HOME/.gitconfig"
