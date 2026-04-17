@@ -8,7 +8,7 @@ set -e
 
 source "$(dirname "$0")/../utils.sh"
 
-print_box "[07] MANUAL INSTALLS"
+print_box "[09] MANUAL INSTALLS"
 
 log "Open the following links in your browser and install manually:"
 echo ""

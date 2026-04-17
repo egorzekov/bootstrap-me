@@ -31,8 +31,6 @@ BREWS=(
   # dev
   jq
   nvim
-  nvm
-  rustup
   docker
 )
 

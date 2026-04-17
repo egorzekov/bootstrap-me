@@ -8,7 +8,7 @@ set -e
 
 source "$(dirname "$0")/../utils.sh"
 
-print_box "[06] DOTFILES"
+print_box "[08] DOTFILES"
 
 DOTFILES_DIR="$(cd "$(dirname "$0")/../.." && pwd)/dotfiles"
 PROFILE="$HOME/.bootstrap_profile"
@@ -48,6 +48,13 @@ stow_package() {
   fi
 }
 
+# ~/.zshrc may be written by the Oh My Zsh installer; back it up so stow can manage it
+if [[ -f "$HOME/.zshrc" && ! -L "$HOME/.zshrc" ]]; then
+  mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+  warn ".zshrc was a plain file — backed up to ~/.zshrc.bak"
+fi
+
 stow_package git      "$HOME/.gitconfig"
 stow_package ghostty  "$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
 stow_package lazygit  "$HOME/Library/Application Support/lazygit/config.yml"
+stow_package zsh      "$HOME/.zshrc"

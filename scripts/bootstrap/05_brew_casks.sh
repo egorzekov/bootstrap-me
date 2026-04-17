@@ -11,6 +11,7 @@ source "$(dirname "$0")/../utils.sh"
 print_box "[05] BREW CASKS"
 
 CASKS=(
+  visual-studio-code
   rectangle
   ghostty
   copilot-cli
