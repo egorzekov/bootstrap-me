@@ -8,8 +8,6 @@ macOS personal bootstrap for Egor Zekov. Stack: Node.js · Rust · AWS.
 run.sh                          # entry point — run this on a fresh Mac
 scripts/
   utils.sh                      # shared logging/UI helpers — sourced by all scripts
-  config.sh                     # shell env config (nvm, zoxide) — source into ~/.zshrc
-  aliases.sh                    # shell aliases — source into ~/.zshrc
   stow_unlink.sh                # remove all stow-managed symlinks from $HOME
   bootstrap/
     00_ssh.sh                   # GitHub SSH key setup + write ~/.bootstrap_profile
