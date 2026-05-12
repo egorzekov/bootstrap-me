@@ -29,9 +29,6 @@ else
 	email = $GIT_EMAIL
 EOF
   ok "~/.gitconfig.local written (name + email)"
-
-  rm -f "$PROFILE"
-  ok "~/.bootstrap_profile cleaned up"
 fi
 
 # ---------------------------------------------------------------------------
