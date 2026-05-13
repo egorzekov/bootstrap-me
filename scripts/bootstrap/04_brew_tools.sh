@@ -32,6 +32,7 @@ BREWS=(
   jq
   nvim
   docker
+  awscli
 )
 
 for pkg in "${BREWS[@]}"; do

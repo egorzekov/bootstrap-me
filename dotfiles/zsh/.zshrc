@@ -3,6 +3,7 @@
 # =============================================================================
 
 export PATH="$HOME/.cargo/bin:$PATH"  # Rust toolchain (rustc, cargo, clippy, etc.)
+export PATH="$HOME/.local/bin:$PATH"  # Claude and other bins
 
 # =============================================================================
 # NVM — Node Version Manager

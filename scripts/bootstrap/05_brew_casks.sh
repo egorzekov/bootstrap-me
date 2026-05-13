@@ -12,12 +12,13 @@ print_box "[05] BREW CASKS"
 
 CASKS=(
   visual-studio-code
-  rectangle
+ # rectangle
   ghostty
-  copilot-cli
-  google-chrome
+ # copilot-cli
+ # google-chrome
   spotify
   telegram
+  docker-desktop
 )
 
 for cask in "${CASKS[@]}"; do
