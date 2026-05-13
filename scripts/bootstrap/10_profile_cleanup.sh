@@ -8,7 +8,7 @@ set -e
 
 source "$(dirname "$0")/../utils.sh"
 
-print_box "[09] PROFILE CLEANUP"
+print_box "[10] PROFILE CLEANUP"
 
 PROFILE="$HOME/.bootstrap_profile"
 

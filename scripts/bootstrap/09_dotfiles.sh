@@ -8,7 +8,7 @@ set -e
 
 source "$(dirname "$0")/../utils.sh"
 
-print_box "[08] DOTFILES"
+print_box "[09] DOTFILES"
 
 DOTFILES_DIR="$(cd "$(dirname "$0")/../.." && pwd)/dotfiles"
 PROFILE="$HOME/.bootstrap_profile"
