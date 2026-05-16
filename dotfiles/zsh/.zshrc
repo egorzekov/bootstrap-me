@@ -115,7 +115,7 @@ source "$(npm root -g)/@mapbox/mbxcli/bin/mapbox.sh"
 # --- Single-letter shortcuts -------------------------------------------------
 # alias a=""
 # alias b=""
-# alias c=""
+alias c="claude"   # Claude Code
 alias d="docker"   # docker CLI shorthand
 # alias e=""
 # alias f=""
