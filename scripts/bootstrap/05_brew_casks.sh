@@ -14,6 +14,7 @@ CASKS=(
   visual-studio-code
  # rectangle
   ghostty
+  cmux
  # copilot-cli
  # google-chrome
   spotify
