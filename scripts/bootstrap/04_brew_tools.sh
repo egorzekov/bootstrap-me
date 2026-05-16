@@ -28,6 +28,9 @@ BREWS=(
   tlrc
   htop
 
+  # utils
+  tokei    # Calculate LOC in project
+
   # dev
   jq
   nvim
