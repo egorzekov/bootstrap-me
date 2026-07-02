@@ -11,15 +11,23 @@ source "$(dirname "$0")/../utils.sh"
 print_box "[05] BREW CASKS"
 
 CASKS=(
-  visual-studio-code
- # rectangle
-  ghostty
+  # editors
+  cursor
+  zed
+
+  # window management
+  rectangle
   cmux
- # copilot-cli
- # google-chrome
-  spotify
+
+  # communication and media
   telegram
+  spotify
+
+  # dev tools
   docker-desktop
+
+  # knowledge management
+  obsidian
 )
 
 for cask in "${CASKS[@]}"; do

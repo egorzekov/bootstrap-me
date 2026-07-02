@@ -2,8 +2,9 @@
 # PATH
 # =============================================================================
 
-export PATH="$HOME/.cargo/bin:$PATH"  # Rust toolchain (rustc, cargo, clippy, etc.)
-export PATH="$HOME/.local/bin:$PATH"  # Claude and other bins
+export PATH="$HOME/.cargo/bin:$PATH"             # Rust toolchain (rustc, cargo, clippy, etc.)
+export PATH="$HOME/.local/bin:$PATH"             # Claude and other bins
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"  # PostgreSQL CLI client
 
 # =============================================================================
 # NVM — Node Version Manager
