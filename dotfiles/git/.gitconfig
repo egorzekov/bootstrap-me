@@ -1,0 +1,34 @@
+[include]
+	path = ~/.gitconfig.local
+
+[core]
+	editor = nvim
+	pager  = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate    = true
+	dark        = true
+	side-by-side = true
+
+[diff]
+	colorMoved = default
+
+[merge]
+	conflictstyle = diff3
+
+[init]
+	defaultBranch = main
+
+[push]
+	autoSetupRemote = true
+
+[pull]
+	rebase = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
