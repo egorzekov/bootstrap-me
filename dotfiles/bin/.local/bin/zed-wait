@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Keeps $EDITOR a bare binary name. Tools that run the editor through a shell
+# cope with "zed --wait", but those that exec it directly as a single argv
+# entry (common in Rust/Go CLIs) look for a binary literally named
+# "zed --wait" and fail.
+
+exec zed --wait "$@"

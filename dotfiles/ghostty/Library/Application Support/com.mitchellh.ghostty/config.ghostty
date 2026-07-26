@@ -3,7 +3,7 @@
 # =============================================================================
 
 # Theme
-theme = Doom Peacock
+theme = Gruvbox Dark
 
 # Font — requires a Nerd Font for eza icons
 font-family = JetBrainsMono Nerd Font
@@ -23,3 +23,53 @@ cursor-style-blink = true
 
 # Misc
 confirm-close-surface = false
+
+# To fix Opt+Del to delete by words (jumping if fine btw)
+# https://github.com/anthropics/claude-code/issues/16830#issuecomment-4173970521
+macos-option-as-alt = true
+
+# =============================================================================
+# Opt out from tabs
+# =============================================================================
+
+# New tab
+keybind = ctrl+shift+t=unbind
+keybind = cmd+t=unbind
+keybind = super+t=unbind
+
+# Close tab
+keybind = ctrl+shift+w=unbind
+keybind = cmd+w=unbind
+
+# Switch tabs (next/previous)
+keybind = ctrl+shift+right_bracket=unbind
+keybind = ctrl+shift+left_bracket=unbind
+keybind = ctrl+tab=unbind
+keybind = ctrl+shift+tab=unbind
+keybind = cmd+shift+right_bracket=unbind
+keybind = cmd+shift+left_bracket=unbind
+
+# Jump to tab N (alt+1 through alt+0, or cmd+1 etc depending on platform)
+keybind = alt+1=unbind
+keybind = alt+2=unbind
+keybind = alt+3=unbind
+keybind = alt+4=unbind
+keybind = alt+5=unbind
+keybind = alt+6=unbind
+keybind = alt+7=unbind
+keybind = alt+8=unbind
+keybind = alt+9=unbind
+keybind = alt+0=unbind
+keybind = cmd+1=unbind
+keybind = cmd+2=unbind
+keybind = cmd+3=unbind
+keybind = cmd+4=unbind
+keybind = cmd+5=unbind
+keybind = cmd+6=unbind
+keybind = cmd+7=unbind
+keybind = cmd+8=unbind
+keybind = cmd+9=unbind
+
+# Move tab
+keybind = cmd+shift+comma=unbind
+keybind = cmd+shift+period=unbind

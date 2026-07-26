@@ -2,7 +2,8 @@
 	path = ~/.gitconfig.local
 
 [core]
-	editor = nvim
+	# no `editor` here on purpose — it would override $EDITOR, which ~/.zshrc
+	# points at Zed locally and nvim over SSH
 	pager  = delta
 
 [interactive]
@@ -27,6 +28,7 @@
 
 [pull]
 	rebase = false
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

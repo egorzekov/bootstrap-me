@@ -1,7 +1,0 @@
-onboarding = false
-[ui.toast]
-delivery = "off"
-
-[theme]
-name = "gruvbox"
-auto_switch = false

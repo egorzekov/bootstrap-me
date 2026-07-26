@@ -1,0 +1,17 @@
+onboarding = false
+[ui.toast]
+delivery = "off"
+
+[theme]
+name = "gruvbox"
+auto_switch = false
+
+[theme.custom]
+surface_dim = "#5b534d"
+
+[ui]
+sidebar_width = 70
+sidebar_max_width = 100
+
+[keys]
+prefix = "ctrl+space"

@@ -14,20 +14,19 @@ CASKS=(
   # editors
   cursor
   zed
+  ghostty
+  obsidian
 
-  # window management
+  # tools
   rectangle
-  cmux
+  docker-desktop
 
   # communication and media
   telegram
   spotify
 
-  # dev tools
-  docker-desktop
-
-  # knowledge management
-  obsidian
+  # fonts
+  font-lilex
 )
 
 for cask in "${CASKS[@]}"; do

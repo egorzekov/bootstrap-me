@@ -2,18 +2,20 @@
 # PATH
 # =============================================================================
 
+typeset -U path PATH fpath FPATH  # keep entries unique — re-sourcing this file won't duplicate
+
 export PATH="$HOME/.cargo/bin:$PATH"             # Rust toolchain (rustc, cargo, clippy, etc.)
 export PATH="$HOME/.local/bin:$PATH"             # Claude and other bins
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"  # PostgreSQL CLI client
-export PATH="$PWD/node_modules/.bin:$PATH"       # To support running node bins directly from repo root
 
 # =============================================================================
-# NVM — Node Version Manager
+# FNM — Fast Node Manager
 # =============================================================================
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # load nvm itself
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # load nvm tab-completions
+# --use-on-cd                        switch Node version on cd, per .nvmrc / .node-version
+# --version-file-strategy=recursive  search parent dirs for that file (monorepo packages)
+# Completions come from the brew formula via FPATH — nothing to source here.
+command -v fnm &>/dev/null && eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
 
 # =============================================================================
 # BUN — JavaScript runtime & toolkit
@@ -29,58 +31,53 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export ZSH="$HOME/.oh-my-zsh"  # Oh My Zsh installation directory
 
-# Theme — see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-# Completion behaviour
-# CASE_SENSITIVE="true"      # enable case-sensitive completion
-# HYPHEN_INSENSITIVE="true"  # treat _ and - as interchangeable (requires CASE_SENSITIVE off)
-
-# Auto-update behaviour
-# zstyle ':omz:update' mode disabled   # never auto-update
-# zstyle ':omz:update' mode auto       # update silently without asking
-# zstyle ':omz:update' mode reminder   # prompt before updating
-# zstyle ':omz:update' frequency 13    # check for updates every N days
-
-# Misc options
-# DISABLE_MAGIC_FUNCTIONS="true"       # fix pasting URLs that contain special characters
-# DISABLE_LS_COLORS="true"             # disable coloured ls output
-# DISABLE_AUTO_TITLE="true"            # don't auto-set the terminal window title
-# ENABLE_CORRECTION="true"             # suggest corrections for mistyped commands
-# COMPLETION_WAITING_DOTS="true"       # show dots while waiting for tab-completion results
-# DISABLE_UNTRACKED_FILES_DIRTY="true" # skip untracked files when computing VCS dirty state
-
-# History timestamp format: "mm/dd/yyyy" | "dd.mm.yyyy" | "yyyy-mm-dd" | strftime format
-# HIST_STAMPS="mm/dd/yyyy"
+ZSH_THEME="robbyrussell"             # Theme — see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes 
 
 # Plugins — keep the list lean; each plugin adds to shell startup time
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-
-# Allow sharing history across multiple zsh sessions
-setopt SHARE_HISTORY
+plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh  # initialise Oh My Zsh (must come after all ZSH_* variables)
 
 # =============================================================================
-# ENVIRONMENT
+# HISTORY
 # =============================================================================
 
-# export MANPATH="/usr/local/man:$MANPATH"  # add Homebrew man pages to MANPATH
-# export LANG=en_US.UTF-8                   # set locale explicitly if needed
+HISTSIZE=50000                                            # commands kept in memory
+SAVEHIST=50000                                            # commands saved to ~/.zsh_history
+setopt SHARE_HISTORY                                      # share across sessions (implies INC_APPEND_HISTORY)
+setopt EXTENDED_HISTORY                                   # record timestamp and duration per command
+setopt HIST_IGNORE_ALL_DUPS                               # drop older duplicates
+setopt HIST_IGNORE_SPACE                                  # skip commands starting with a space
+setopt HIST_REDUCE_BLANKS                                 # normalise whitespace before saving
+setopt HIST_VERIFY                                        # expand !! onto the line instead of running it
 
-# Preferred editor (vim over SSH, nvim locally)
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+# =============================================================================
+# DIRECTORY NAVIGATION
+# =============================================================================
 
-# export ARCHFLAGS="-arch $(uname -m)"  # force correct arch for native extensions on Apple Silicon
+setopt AUTO_CD                                            # bare directory name means cd into it
+setopt AUTO_PUSHD                                         # every cd pushes onto the dir stack
+setopt PUSHD_IGNORE_DUPS                                  # keep the stack free of repeats
+setopt PUSHD_SILENT                                       # don't print the stack on every cd
+
+# =============================================================================
+# EDITORS
+# =============================================================================
+
+# nvim over SSH (or wherever Zed is absent); Zed locally, via the zed-wait wrapper
+# in dotfiles/bin so $EDITOR stays a bare binary name rather than "zed --wait".
+if [[ -n $SSH_CONNECTION ]] || ! command -v zed &>/dev/null; then
+  export EDITOR=nvim VISUAL=nvim
+else
+  export EDITOR=zed-wait VISUAL=zed-wait
+fi
 
 # =============================================================================
 # FZF — fuzzy finder
 # =============================================================================
 
-eval "$(fzf --zsh)"  # enable fzf key bindings (Ctrl-T, Ctrl-R, Alt-C) and shell completion
+# key bindings (Ctrl-T, Ctrl-R, Alt-C) and shell completion
+command -v fzf &>/dev/null && eval "$(fzf --zsh)"
 
 # Use fd as the underlying file finder (respects .gitignore, includes hidden files)
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -107,62 +104,88 @@ export TURBO_UI=true       # active TurboRepo interactive UI
 # ZOXIDE — smarter cd
 # =============================================================================
 
-eval "$(zoxide init zsh)"  # registers __zoxide_z; pair with an alias (e.g. alias z=__zoxide_z)
+# defines `z` (jump to best match) and `zi` (interactive picker) — no alias needed
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 
 # =============================================================================
 # MAPBOX STUFF
 # =============================================================================
 
-source ~/dev/mapbox/mbxcli/bin/mapbox.sh
+[[ -f ~/dev/mapbox/mbxcli/bin/mapbox.sh ]] && source ~/dev/mapbox/mbxcli/bin/mapbox.sh
 
 # =============================================================================
 # ALIASES
 # =============================================================================
 
-# --- Single-letter shortcuts -------------------------------------------------
 # alias a=""
-# alias b=""
-alias c="claude"   # Claude Code
-alias d="docker"   # docker CLI shorthand
+
+alias b="bat"
+
+alias c="claude"
+alias cl="clear"
+alias cwd='pwd | pbcopy && echo "$(pwd) Copied to clipboard"'
+
+alias d="docker"
+
 # alias e=""
-# alias f=""
-alias g="git"      # git shorthand
-# alias h=""
+
+# alias f=""                                                      # `fd` is typed directly — aliasing
+                                                                  # `find` to it silently misreads
+                                                                  # incompatible flags
+
+alias g="git"
+alias gs="g status"
+alias gl="g log --oneline --graph --decorate --all"               # compact, decorated commit graph
+alias gm="g switch main && git fetch --prune && git pull"         # actualize main, drop stale remotes
+gc() { git commit -m "$*"; }
+gcp() { git commit -m "$*" && git push; }
+gacp() { git add . && git commit -m "$*" && git push; }
+gca() { git commit --amend --no-edit; }
+gsb() {
+  local b
+  b=$(git branch --format='%(refname:short)' | fzf --height 40% --reverse) || return
+  [[ -n $b ]] && git switch "$b"
+}
+                                                                  # `rg` is typed directly — aliasing
+                                                                  # `grep` to it turns -r into --replace
+
+alias h="herdr"
+
 # alias i=""
+
 # alias j=""
+
 # alias k=""
+
 # alias l=""
-# alias m=""
-alias n="nvim"     # open Neovim
-# alias o=""
-alias p="pnpm"     # pnpm package manager
+alias lg="lazygit"                                                # TUI git client
+alias ll="eza -la --icons --ignore-glob='.git'"                   # long list with icons and hidden files
+alias ls="eza --icons --ignore-glob='.git'"                       # list with icons (replaces coreutils ls)
+
+alias m="mbx"
+
+alias n="nvim"
+
+alias o="opencode"
+
+alias p="pnpm"
+
 # alias q=""
+
 # alias r=""
+
 # alias s=""
-# alias t=""
+
+alias t="pnpm turbo"
+
 # alias u=""
+
 # alias v=""
+
 # alias w=""
+
 # alias x=""
+
 # alias y=""
-# alias z=""  — reserved for zoxide (__zoxide_z)
 
-# --- Git ---------------------------------------------------------------------
-alias gl="g log --oneline --graph --decorate --all"  # compact, decorated commit graph
-alias lg="lazygit"                                    # TUI git client
-
-# --- Filesystem --------------------------------------------------------------
-alias ls="eza --icons --ignore-glob='.git'"           # list with icons (replaces coreutils ls)
-alias ll="eza -la --icons --ignore-glob='.git'"       # long list with icons and hidden files
-alias find="fd"                                        # modern find replacement (fd-find)
-alias grep="rg"                                        # ripgrep — faster grep
-
-# --- Tools -------------------------------------------------------------------
-alias ze="zellij"  # terminal multiplexer
-
-# --- Utility -----------------------------------------------------------------
-alias cl="clear"           # clear the terminal screen
-alias cwd="pwd | pbcopy"   # copy to clipboard current working dir
-
-# bun completions
-[ -s "/Users/egorzekov/.bun-1.3.6/_bun" ] && source "/Users/egorzekov/.bun-1.3.6/_bun"
+# z / zi                                                          # provided by zoxide

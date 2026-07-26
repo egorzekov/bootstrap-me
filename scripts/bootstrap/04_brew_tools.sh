@@ -17,16 +17,16 @@ BREWS=(
   git-lfs         # Git large file support
   lazygit         # Terminal UI for git
 
+
+  # multiplexer
+  herdr
+
   # dotfiles
   stow            # Symlink manager for dotfiles
 
-  # shell navigation and terminal workflow
-  zellij          # Terminal workspace manager
+  # navigation, search, files system
   fzf             # Fuzzy finder
   zoxide          # Smarter cd command
-
-  # file listing and search
-  bat             # Better cat with syntax highlighting
   eza             # Modern ls replacement
   fd              # Fast find replacement
   ripgrep         # Fast text search
@@ -36,6 +36,7 @@ BREWS=(
   htop            # Interactive process viewer
   tokei           # Count lines of code
   jq              # JSON processor
+  bat             # Better cat with syntax highlighting
 
   # editors
   neovim          # Modern Vim-based editor
@@ -50,6 +51,7 @@ BREWS=(
   mongosh         # MongoDB CLI client
 
   # language and package tooling
+  fnm             # Fast Node.js version manager
   uv              # Python package and project manager
 
   # misc dev tools

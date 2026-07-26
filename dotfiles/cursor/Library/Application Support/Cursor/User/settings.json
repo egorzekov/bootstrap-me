@@ -1,0 +1,39 @@
+{
+    "window.autoDetectColorScheme": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "Lilex, monospace",
+    "editor.fontLigatures": true,
+    "editor.lineHeight": 1.618,
+    "editor.tabSize": 2,
+    "files.autoSave": "afterDelay",
+    "editor.wordWrap": "on",
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "workbench.editor.wrapTabs": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.biome": "explicit",
+        "source.organizeImports.biome": "explicit"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "search.exclude": {
+        "**/.turbo": true,
+        "**/dist": true,
+        "**/graphify-out": true,
+        "**/graphify-out/wiki": true
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "cursor.inlineDiff.enablePerformanceProtection": false,
+    "git.blame.editorDecoration.enabled": true,
+    "material-icon-theme.activeIconPack": "nest",
+    "material-icon-theme.hidesExplorerArrows": true,
+    "workbench.tree.indent": 16,
+    "terminal.integrated.fontSize": 15,
+    "workbench.preferredDarkColorTheme": "Zed Gruvbox Dark"
+}
