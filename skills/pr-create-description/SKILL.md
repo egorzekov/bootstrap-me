@@ -1,6 +1,7 @@
 ---
 name: pr-create-description
 description: Generate a pull request description from current branch changes. Resolves the PR base branch (supports stacked branches), checks committed and uncommitted changes, respects an existing PR template if present, and outputs the description as a markdown code block.
+disable-model-invocation: true
 ---
 
 # PR Create Description
