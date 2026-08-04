@@ -27,6 +27,7 @@ confirm-close-surface = false
 # To fix Opt+Del to delete by words (jumping if fine btw)
 # https://github.com/anthropics/claude-code/issues/16830#issuecomment-4173970521
 macos-option-as-alt = true
+macos-titlebar-style = transparent
 
 # =============================================================================
 # Opt out from tabs

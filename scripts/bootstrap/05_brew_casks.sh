@@ -15,7 +15,6 @@ CASKS=(
   cursor
   zed
   ghostty
-  obsidian
 
   # tools
   rectangle
@@ -27,6 +26,8 @@ CASKS=(
 
   # fonts
   font-lilex
+  font-lilex-nerd-font
+  font-jetbrains-mono-nerd-font
 )
 
 for cask in "${CASKS[@]}"; do

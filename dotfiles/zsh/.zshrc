@@ -98,7 +98,9 @@ _fzf_compgen_dir() {
 # JS ECOSYSTEM
 # =============================================================================
 
-export TURBO_UI=true       # active TurboRepo interactive UI
+# export TURBO_UI=true                  # active TurboRepo interactive UI
+export TURBO_NO_UPDATE_NOTIFIER=1       # disable TurboRepo update notifications
+export NO_UPDATE_NOTIFIER=1             # disable NPM update notifications
 
 # =============================================================================
 # ZOXIDE — smarter cd
@@ -129,9 +131,7 @@ alias d="docker"
 
 # alias e=""
 
-# alias f=""                                                      # `fd` is typed directly — aliasing
-                                                                  # `find` to it silently misreads
-                                                                  # incompatible flags
+# alias f=""
 
 alias g="git"
 alias gs="g status"
@@ -146,8 +146,6 @@ gsb() {
   b=$(git branch --format='%(refname:short)' | fzf --height 40% --reverse) || return
   [[ -n $b ]] && git switch "$b"
 }
-                                                                  # `rg` is typed directly — aliasing
-                                                                  # `grep` to it turns -r into --replace
 
 alias h="herdr"
 
@@ -159,6 +157,7 @@ alias h="herdr"
 
 # alias l=""
 alias lg="lazygit"                                                # TUI git client
+alias ld="lazydocker"                                             # TUI docker client
 alias ll="eza -la --icons --ignore-glob='.git'"                   # long list with icons and hidden files
 alias ls="eza --icons --ignore-glob='.git'"                       # list with icons (replaces coreutils ls)
 

@@ -13,5 +13,6 @@ surface_dim = "#5b534d"
 sidebar_width = 70
 sidebar_max_width = 100
 
+agent_panel_sort = "spaces"
 [keys]
 prefix = "ctrl+space"

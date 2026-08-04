@@ -14,14 +14,14 @@
         "source.fixAll.biome": "explicit",
         "source.organizeImports.biome": "explicit"
     },
-    "[typescript]": {
-        "editor.defaultFormatter": "biomejs.biome"
-    },
     "search.exclude": {
         "**/.turbo": true,
         "**/dist": true,
         "**/graphify-out": true,
         "**/graphify-out/wiki": true
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "biomejs.biome"
     },
     "[typescriptreact]": {
         "editor.defaultFormatter": "biomejs.biome"
@@ -34,6 +34,14 @@
     "material-icon-theme.activeIconPack": "nest",
     "material-icon-theme.hidesExplorerArrows": true,
     "workbench.tree.indent": 16,
+    "terminal.integrated.fontFamily": "'Lilex Nerd Font Mono', monospace",
     "terminal.integrated.fontSize": 15,
-    "workbench.preferredDarkColorTheme": "Zed Gruvbox Dark"
+    "workbench.preferredDarkColorTheme": "Zed Gruvbox Dark",
+    "terminal.integrated.fontLigatures.enabled": true,
+    "editor.inlayHints.enabled": "off",
+    "githubPullRequests.pullBranch": "never",
+    "editor.fontSize": 14,
+    "diffEditor.renderSideBySide": false,
+    "explorer.confirmDelete": false,
+    "cursor.composer.textSizeScale": 1.15
 }
