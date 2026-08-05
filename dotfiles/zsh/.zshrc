@@ -64,13 +64,7 @@ setopt PUSHD_SILENT                                       # don't print the stac
 # EDITORS
 # =============================================================================
 
-# nvim over SSH (or wherever Zed is absent); Zed locally, via the zed-wait wrapper
-# in dotfiles/bin so $EDITOR stays a bare binary name rather than "zed --wait".
-if [[ -n $SSH_CONNECTION ]] || ! command -v zed &>/dev/null; then
-  export EDITOR=nvim VISUAL=nvim
-else
-  export EDITOR=zed-wait VISUAL=zed-wait
-fi
+export EDITOR=nvim VISUAL=nvim
 
 # =============================================================================
 # FZF — fuzzy finder
@@ -98,7 +92,6 @@ _fzf_compgen_dir() {
 # JS ECOSYSTEM
 # =============================================================================
 
-# export TURBO_UI=true                  # active TurboRepo interactive UI
 export TURBO_NO_UPDATE_NOTIFIER=1       # disable TurboRepo update notifications
 export NO_UPDATE_NOTIFIER=1             # disable NPM update notifications
 
@@ -135,6 +128,7 @@ alias d="docker"
 
 alias g="git"
 alias gs="g status"
+alias gb="g branch"
 alias gl="g log --oneline --graph --decorate --all"               # compact, decorated commit graph
 alias gm="g switch main && git fetch --prune && git pull"         # actualize main, drop stale remotes
 gc() { git commit -m "$*"; }
