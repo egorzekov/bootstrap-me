@@ -9,6 +9,8 @@ run.sh                          # entry point — run this on a fresh Mac
 scripts/
   utils.sh                      # shared logging/UI helpers — sourced by all scripts
   stow_unlink.sh                # remove all stow-managed symlinks from $HOME
+  backfills/                    # one-time migrations, run by hand; never run by run.sh
+    unlink_skills_dir.sh        # old whole-dir skills symlink → real dirs (then run 10_agent_skills.sh)
   bootstrap/
     00_ssh.sh                   # GitHub SSH key setup + write ~/.bootstrap_profile
     01_xcode.sh                 # Xcode CLI tools

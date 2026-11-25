@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # =============================================================================
-# AGENT SKILLS — Symlink repo-owned skills into ~/.agents and ~/.claude
+# AGENT SKILLS — Symlink each repo-owned skill into ~/.agents/skills and
+# ~/.claude/skills. The target dirs stay real directories so tool-managed
+# skills (Claude sync, Orca, ...) never get written into this repo.
 # =============================================================================
 
 set -e
@@ -12,31 +14,30 @@ print_box "[10] AGENT SKILLS"
 
 SKILLS_DIR="$(cd "$(dirname "$0")/../.." && pwd)/skills"
 
-link_skills_dir() {
+link_skills() {
   local parent_dir="$1"
   local label="$2"
-  local target="$parent_dir/skills"
+  local target_dir="$parent_dir/skills"
 
-  mkdir -p "$parent_dir"
+  mkdir -p "$target_dir"
 
-  if [[ -L "$target" ]]; then
-    local current
-    current="$(readlink "$target")"
-    if [[ "$current" == "$SKILLS_DIR" ]]; then
-      ok "$label already linked"
-      return
+  local skill name dest
+  for skill in "$SKILLS_DIR"/*/; do
+    [[ -f "$skill/SKILL.md" ]] || continue
+    skill="${skill%/}"
+    name="$(basename "$skill")"
+    dest="$target_dir/$name"
+
+    if [[ -L "$dest" && "$(readlink "$dest")" == "$skill" ]]; then
+      ok "$label/$name already linked"
+    elif [[ -e "$dest" || -L "$dest" ]]; then
+      warn "$label/$name exists and is not our link — skipped"
+    else
+      ln -s "$skill" "$dest"
+      ok "$label/$name linked"
     fi
-    rm "$target"
-    warn "$label had wrong symlink — replaced"
-  elif [[ -e "$target" ]]; then
-    local backup="${target}.bak.$(date +%Y%m%d%H%M%S)"
-    mv "$target" "$backup"
-    warn "$label was a plain path — backed up to $backup"
-  fi
-
-  ln -s "$SKILLS_DIR" "$target"
-  ok "$label linked to repo skills"
+  done
 }
 
-link_skills_dir "$HOME/.agents" "~/.agents/skills"
-link_skills_dir "$HOME/.claude" "~/.claude/skills"
+link_skills "$HOME/.agents" "~/.agents/skills"
+link_skills "$HOME/.claude" "~/.claude/skills"

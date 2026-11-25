@@ -60,6 +60,7 @@ run.sh                    # entry point
 scripts/bootstrap/        # numbered install steps
 scripts/utils.sh          # shared logging helpers
 scripts/stow_unlink.sh    # unlink stow packages
+scripts/backfills/        # one-time migrations, run by hand (not by run.sh)
 dotfiles/                 # stow packages → $HOME
 skills/                   # agent skills installed by bootstrap
 ```

@@ -182,3 +182,9 @@ alias t="pnpm turbo"
 # alias y=""
 
 # z / zi                                                          # provided by zoxide
+
+# Pi
+export PATH="/Users/egorzekov/.local/share/fnm/node-versions/v24.14.0/installation/bin:$PATH"
+
+# bun completions
+[ -s "/Users/egorzekov/.bun/_bun" ] && source "/Users/egorzekov/.bun/_bun"

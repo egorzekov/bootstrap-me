@@ -7,6 +7,39 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "sticky_scroll": {
+    "enabled": true
+  },
+  "edit_predictions": {
+    "allow_data_collection": "no"
+  },
+  "tab_size": 4,
+  "toolbar": {
+    "code_actions": false
+  },
+  "which_key": {
+    "enabled": true
+  },
+  "autosave": "on_focus_change",
+  "cursor_shape": "bar",
+  "cursor_animation": {
+    "enabled": false
+  },
+  "text_rendering_mode": "platform_default",
+  "agent_ui_font_size": 13.0,
+  "buffer_line_height": "comfortable",
+  "terminal": {
+    "toolbar": {
+      "breadcrumbs": false
+    },
+    "copy_on_select": true,
+    "minimum_contrast": 45.0,
+    "shell": "system",
+    "option_as_meta": true,
+    "font_weight": 500.0,
+    "font_size": 14.0,
+    "font_family": "Lilex Nerd Font Mono"
+  },
   "diff_view_style": "split",
   "cli_default_open_behavior": "existing_window",
   "tabs": {
@@ -25,22 +58,27 @@
       },
     },
   },
-  "file_scan_inclusions": ["graphify-out/"],
   "agent_servers": {
     "claude-acp": {
       "default_config_options": {
         "fast": "on",
-        "effort": "high",
-        "mode": "default",
-        "model": "opus[1m]",
+        "effort": "medium",
+        "mode": "plan",
+        "model": "opus",
       },
       "type": "registry",
     },
     "cursor": {
+      "favorite_config_option_values": {
+        "context": ["500k"],
+      },
       "default_config_options": {
-        "context": "300k",
+        "mode": "ask",
+        "fast": "false",
+        "reasoning_effort": "medium",
+        "context": "500k",
         "effort": "medium",
-        "model": "gpt-5.6-terra",
+        "model": "grok-4.7",
       },
       "type": "registry",
     },
@@ -52,12 +90,26 @@
     "dock": "left",
   },
   "agent": {
-    "sidebar_side": "right",
+    "default_model": {
+      "provider": "amazon-bedrock",
+      "model": "claude-fable-5",
+      "enable_thinking": true,
+      "effort": "high"
+    },
+    "auto_compact": {
+      "threshold": "90%"
+    },
+    "play_sound_when_agent_done": "when_hidden",
+    "threads_sidebar": {
+      "position": "right",
+    },
     "dock": "right",
     "favorite_models": [],
     "model_parameters": [],
   },
   "git_panel": {
+    "group_by": "staging",
+    "tree_view": true,
     "dock": "left",
   },
   "project_panel": {
@@ -68,8 +120,8 @@
     "metrics": false,
     "anthropic_retention": false,
   },
-  "ui_font_size": 16,
-  "buffer_font_size": 15,
+  "ui_font_size": 15.0,
+  "buffer_font_size": 13.0,
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light",

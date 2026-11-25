@@ -47,7 +47,6 @@ BREWS=(
 
   # databases
   libpq   # PostgreSQL CLI client
-  mongosh # MongoDB CLI client
 
   # language and package tooling
   fnm # Fast Node.js version manager

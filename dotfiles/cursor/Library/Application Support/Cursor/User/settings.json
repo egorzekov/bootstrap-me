@@ -41,7 +41,8 @@
     "editor.inlayHints.enabled": "off",
     "githubPullRequests.pullBranch": "never",
     "editor.fontSize": 14,
-    "diffEditor.renderSideBySide": false,
+    "diffEditor.renderSideBySide": true,
     "explorer.confirmDelete": false,
-    "cursor.composer.textSizeScale": 1.15
+    "cursor.composer.textSizeScale": 1.15,
+    "cursor.composer.queueMessageDefaultBehavior": "steer"
 }
